@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 public class regScreen extends javax.swing.JPanel 
 {
 
-  /**
+	/**
 	 * Registration screen
 	 * Card 2
 	 */
