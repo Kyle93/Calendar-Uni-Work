@@ -11,6 +11,7 @@ public class Main
     private CreateEvent panel4;
     private EventPage panel5;
     private FriendPage panel6;
+    private AddFriend panel7;
 
     private void displayGUI()
     {
@@ -21,7 +22,7 @@ public class Main
         contentPane.setBorder(
             BorderFactory.createEmptyBorder(10, 10, 10, 10));
         contentPane.setLayout(new CardLayout());
-        contentPane.setPreferredSize(new Dimension(600, 400));
+        contentPane.setPreferredSize(new Dimension(620, 420));
 
         panel1 = new login(contentPane);
         panel2 = new regScreen(contentPane);
@@ -29,6 +30,7 @@ public class Main
         panel4 = new CreateEvent(contentPane);
         panel5 = new EventPage(contentPane);
         panel6 = new FriendPage(contentPane);
+        panel7 = new AddFriend(contentPane);
 
         contentPane.add(panel1, "login"); 
         contentPane.add(panel2, "regScreen");  
@@ -36,6 +38,7 @@ public class Main
         contentPane.add(panel4, "createEvent"); 
         contentPane.add(panel5, "eventPage"); 
         contentPane.add(panel6, "friendPage"); 
+        contentPane.add(panel7, "addFriend"); 
 
         frame.setContentPane(contentPane);      
         frame.pack();   
