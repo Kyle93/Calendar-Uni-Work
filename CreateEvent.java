@@ -110,6 +110,7 @@ public class CreateEvent extends javax.swing.JPanel
 		comboYears.addItemListener(new ComboHandlerYears());
 		add(comboYears);
 		
+		
 		JLabel lblNewLabel = new JLabel("Enter event name:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setBounds(50, 60, 250, 40);
