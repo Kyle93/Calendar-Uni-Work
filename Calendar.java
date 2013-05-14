@@ -21,7 +21,7 @@ import javax.swing.table.AbstractTableModel;
 public class Calendar extends javax.swing.JPanel 
 {
 
-  /**
+	/**
 	 * Calendar screen
 	 * Card 3
 	 */
@@ -105,7 +105,7 @@ public class Calendar extends javax.swing.JPanel
 		add(table);
 		
 		JButton btnLogOut = new JButton("Log out!");
-		btnLogOut.setBounds(501, 11, 89, 23);
+		btnLogOut.setBounds(500, 10, 89, 23);
 		btnLogOut.addActionListener(new ActionListener()
         {
             @Override
@@ -121,8 +121,7 @@ public class Calendar extends javax.swing.JPanel
 
 	public class ComboHandler implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
-			model.setMonth(comboBox.getSelectedIndex() + 1998, list.getSelectedIndex());
-			table.repaint();
+			
 		}
 	}
 
