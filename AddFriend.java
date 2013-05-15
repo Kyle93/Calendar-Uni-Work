@@ -18,7 +18,7 @@ public class AddFriend extends javax.swing.JPanel
 {
 
     /**
-   * Create Event Screen
+	 * Create Event Screen
 	 * Card 4
 	 */
 	private static final long serialVersionUID = 1L;
@@ -134,12 +134,12 @@ public class AddFriend extends javax.swing.JPanel
     private void cancelButton(ActionEvent ae)
     {
         CardLayout layout = (CardLayout)contentPane.getLayout();
-        layout.show(contentPane, "friendsPage");
+        layout.show(contentPane, "friendPage");
     }
     
     private void eventsButton(ActionEvent ae)
     {
         CardLayout layout = (CardLayout)contentPane.getLayout();
-        layout.show(contentPane, "eventsPage");
+        layout.show(contentPane, "eventPage");
     }
 }
