@@ -8,11 +8,15 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class CreateEvent extends javax.swing.JPanel 
 {
@@ -31,8 +35,12 @@ public class CreateEvent extends javax.swing.JPanel
 	JComboBox comboMonths = new JComboBox(months);
     String[] years = { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" };
 	JComboBox comboYears = new JComboBox(years);
+	
+	String[] someNames = { "Kyle Strudwick", "George", "John Smith" };
+	JList canInvite = new JList(someNames);
+	JScrollPane scrollPane_1 = new JScrollPane();
+	
 	private JTextField txtEventName;
-	private JTextField txtEmail;
 
     public CreateEvent(JPanel cp) 
     {
@@ -135,15 +143,16 @@ public class CreateEvent extends javax.swing.JPanel
 		lblEnterEmailTo.setBounds(50, 225, 250, 40);
 		add(lblEnterEmailTo);
 		
-		txtEmail = new JTextField();
-		txtEmail.setColumns(10);
-		txtEmail.setBounds(300, 225, 190, 40);
-		add(txtEmail);
+		JLabel lblEnterDate = new JLabel("Enter date:");
+		lblEnterDate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEnterDate.setBounds(50, 276, 250, 40);
+		add(lblEnterDate);
 		
-		JLabel label = new JLabel("Enter email to invite:");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setBounds(50, 276, 250, 40);
-		add(label);
+		scrollPane_1.setBounds(300, 220, 190, 40);
+		add(scrollPane_1);
+		scrollPane_1.setViewportView(canInvite);
+		canInvite.setSelectedIndex(3);
+		canInvite.addListSelectionListener(new friendsHandle());
     }
     
     public class ComboHandlerDays implements ItemListener {
@@ -159,6 +168,11 @@ public class CreateEvent extends javax.swing.JPanel
     public class ComboHandlerYears implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
 			// Do on change
+		}
+	}
+    
+    public class friendsHandle implements ListSelectionListener {
+		public void valueChanged(ListSelectionEvent e) {
 		}
 	}
     
