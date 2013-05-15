@@ -6,6 +6,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -56,25 +58,25 @@ public class Calendar extends javax.swing.JPanel
 		JButton btnEvents = new JButton("View events");
 		btnEvents.setBounds(26, 70, 120, 23);
 		btnEvents.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                eventsButton(ae);
-            }
-        });
+		{
+			@Override
+			public void actionPerformed(ActionEvent ae)
+			{
+				eventsButton(ae);
+			}
+		});
 		add(btnEvents);
 
 		JButton btnFriends = new JButton("View friends");
 		btnFriends.setBounds(26, 140, 120, 23);
 		btnFriends.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                friendsButton(ae);
-            }
-        });
+		{
+			@Override
+			public void actionPerformed(ActionEvent ae)
+			{
+				friendsButton(ae);
+			}
+		});
 		add(btnFriends);
 
 		JLabel lblEventsNotify = new JLabel("x event notifications");
@@ -103,25 +105,31 @@ public class Calendar extends javax.swing.JPanel
 		table.setGridColor(Color.black);
 		table.setShowGrid(true);
 		add(table);
-		
+
 		JButton btnLogOut = new JButton("Log out!");
 		btnLogOut.setBounds(500, 10, 89, 23);
 		btnLogOut.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                logoutButton(ae);
-            }
-        });
+		{
+			@Override
+			public void actionPerformed(ActionEvent ae)
+			{
+				logoutButton(ae);
+			}
+		});
 		add(btnLogOut);
+		
+		JLabel lblDayEvents = new JLabel("Todays events");
+		lblDayEvents.setBackground(Color.LIGHT_GRAY);
+		lblDayEvents.setBounds(174, 74, 390, 89);
+		add(lblDayEvents);
 
 		setVisible(true);
 	}
 
 	public class ComboHandler implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
-			
+			model.setMonth(comboBox.getSelectedIndex() + 1998, list.getSelectedIndex());
+			table.repaint();
 		}
 	}
 
@@ -131,24 +139,24 @@ public class Calendar extends javax.swing.JPanel
 			table.repaint();
 		}
 	}
-	
+
 	private void eventsButton(ActionEvent ae)
-    {
-        CardLayout layout = (CardLayout)contentPane.getLayout();
-        layout.show(contentPane, "eventPage");
-    }
-	
+	{
+		CardLayout layout = (CardLayout)contentPane.getLayout();
+		layout.show(contentPane, "eventPage");
+	}
+
 	private void friendsButton(ActionEvent ae)
-    {
-        CardLayout layout = (CardLayout)contentPane.getLayout();
-        layout.show(contentPane, "friendPage");
-    }
-	
+	{
+		CardLayout layout = (CardLayout)contentPane.getLayout();
+		layout.show(contentPane, "friendPage");
+	}
+
 	private void logoutButton(ActionEvent ae)
-    {
-        CardLayout layout = (CardLayout)contentPane.getLayout();
-        layout.show(contentPane, "login");
-    }
+	{
+		CardLayout layout = (CardLayout)contentPane.getLayout();
+		layout.show(contentPane, "login");
+	}
 }
 
 class CalendarModel extends AbstractTableModel {
@@ -189,7 +197,7 @@ class CalendarModel extends AbstractTableModel {
 		java.util.GregorianCalendar cal = new java.util.GregorianCalendar();
 		cal.set(year, month, 1);
 		int offset = cal.get(java.util.GregorianCalendar.DAY_OF_WEEK) - 1;
-		offset += 7;
+		offset += 5;
 		int num = daysInMonth(year, month);
 		for (int i = 0; i < num; ++i) {
 			calendar[offset / 7][offset % 7] = Integer.toString(i + 1);
